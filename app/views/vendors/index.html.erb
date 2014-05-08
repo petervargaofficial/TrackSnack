@@ -1,1 +1,23 @@
-all vendors :)
+<strong>All vendors:</strong>
+<br>
+
+<table>
+  <tr>
+    <th>Logo</th>
+    <th>Vendor Name</th>
+    <th>Editing</th>
+  </tr>
+  <% @vendors.each do |vendor| %>
+    <tr>
+      <td><%= image_tag(vendor.logo, size: "50x50") %></td>
+      <td><%= vendor.name %></td>
+      <td>
+        <%= link_to("details", vendor) %>
+        <%= link_to("edit", edit_vendor_path(vendor)) %>
+        <%= link_to("delete", vendor, :method => :delete, :confirm => 'Are you sure?') %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<a href="/vendors/new">new vendor</a><br>

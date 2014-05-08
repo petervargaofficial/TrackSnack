@@ -1,0 +1,19 @@
+<%= form_for @vendor do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, :autofocus => true %>
+  <br>
+  <%= f.label :logo %>
+  <%= f.text_field :logo %>
+  <br>
+  <%= f.label :latitude %>
+  <%= f.text_field :latitude %>
+  <br>
+  <%= f.label :longitude %>
+  <%= f.text_field :longitude %>  
+  <br>
+    <p>
+      <a href="http://itouchmap.com/latlong.html">use this</a>
+    </p>
+  <br>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

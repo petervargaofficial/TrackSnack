@@ -1,0 +1,13 @@
+<%= form_for @vendor do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :logo %>
+  <%= f.text_field :logo %>
+  <%= f.label :longitude %>
+  <%= f.text_field :longitude %>
+  <%= f.label :latitude %>
+  <%= f.text_field :latitude %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to("all vendors", vendors_path) %>
