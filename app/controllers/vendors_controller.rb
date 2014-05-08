@@ -22,7 +22,6 @@ class VendorsController < ApplicationController
 
 	def update
 		vendor = Vendor.find_by_id(params[:id])
-		binding.pry
 		vendor.update(vendor_params)
 		redirect_to vendors_path
 	end
