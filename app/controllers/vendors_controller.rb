@@ -20,6 +20,13 @@ class VendorsController < ApplicationController
 		@vendor = Vendor.find_by_id(params[:id])
 	end
 
+	def update
+		vendor = Vendor.find_by_id(params[:id])
+		binding.pry
+		vendor.update(vendor_params)
+		redirect_to vendors_path
+	end
+
 	def destroy
 		Vendor.find_by_id(params[:id]).delete
 		redirect_to vendors_path
