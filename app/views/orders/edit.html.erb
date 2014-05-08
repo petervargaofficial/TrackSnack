@@ -1,0 +1,10 @@
+<h1>Edit order#: <%= @order.id %></h1>
+<%= form_for @order do |f| %>
+  <%= f.label :user_id %>
+  <%= f.text_field :user_id %> <br>
+  <%= f.label :confirmed %>
+  <%= f.text_field :confirmed %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to("all orders", orders_path) %>

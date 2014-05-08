@@ -2,6 +2,7 @@ TrackSnack::Application.routes.draw do
   root 'sites#index'
   resources :vendors
   resources :users
+  resources :orders
 end
 
 # Peters-MacBook-Pro:trackSnack petervarga$ rake routes
@@ -23,3 +24,11 @@ end
 #             PATCH  /users/:id(.:format)        users#update
 #             PUT    /users/:id(.:format)        users#update
 #             DELETE /users/:id(.:format)        users#destroy
+#      orders GET    /orders(.:format)           orders#index
+#             POST   /orders(.:format)           orders#create
+#   new_order GET    /orders/new(.:format)       orders#new
+#  edit_order GET    /orders/:id/edit(.:format)  orders#edit
+#       order GET    /orders/:id(.:format)       orders#show
+#             PATCH  /orders/:id(.:format)       orders#update
+#             PUT    /orders/:id(.:format)       orders#update
+#             DELETE /orders/:id(.:format)       orders#destroy

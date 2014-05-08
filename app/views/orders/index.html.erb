@@ -1,0 +1,23 @@
+<h1>All Orders</h1>
+<p><%= link_to("new order", new_order_path) %></p>
+
+<table>
+  <th>
+    <td>User id</td>
+    <td>Time Created</td>
+    <td>Confirmed</td>
+    <td>Manage</td>
+  </th>
+  <% @orders.each do |order| %>
+  <tr>
+    <td><%= order.user_id %></td>
+    <td><%= order.created_at.to_time.in_time_zone('Pacific Time (US & Canada)') %></td>
+    <td><%= order.confirmed %></td>
+    <td>
+      <%= link_to("detail", order_path(order)) %>
+      <%= link_to("edit", edit_order_path(order)) %>
+      <%= link_to("delete", order, :method => :delete, :confirm => "Are you sure?") %>
+    </td>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,5 @@
+<h1>Orders ID <%= @order.id%></h1>
+<p>Order creation time: <%= @order.created_at %></p>
+<p>Confirmed: <%= @order.confirmed %> </p>
+
+<%= link_to("all orders", orders_path) %>
