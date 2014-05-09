@@ -1,40 +1,42 @@
 class VendorsController < ApplicationController
-	def index
-		@vendors = Vendor.all
-	end
+  before_filter :signed_in_user
 
-	def new
-		@vendor = Vendor.new
-	end
+  def index
+    @vendors = Vendor.all
+  end
 
-	def create
-		vendor = Vendor.create vendor_params
-		redirect_to(vendor)
-	end
+  def new
+    @vendor = Vendor.new
+  end
 
-	def show
-		@vendor = Vendor.find_by_id(params[:id])
-	end
+  def create
+    vendor = Vendor.create vendor_params
+    redirect_to(vendor)
+  end
 
-	def edit
-		@vendor = Vendor.find_by_id(params[:id])
-	end
+  def show
+    @vendor = Vendor.find_by_id(params[:id])
+  end
 
-	def update
-		vendor = Vendor.find_by_id(params[:id])
-		vendor.update(vendor_params)
-		redirect_to vendors_path
-	end
+  def edit
+    @vendor = Vendor.find_by_id(params[:id])
+  end
 
-	def destroy
-		Vendor.find_by_id(params[:id]).delete
-		redirect_to vendors_path
-	end
+  def update
+    vendor = Vendor.find_by_id(params[:id])
+    vendor.update(vendor_params)
+    redirect_to vendors_path
+  end
 
-	private
+  def destroy
+    Vendor.find_by_id(params[:id]).delete
+    redirect_to vendors_path
+  end
 
-	def vendor_params
-		params.require(:vendor).permit(:name, :logo, :latitude, :longitude)
-	end
+  private
+
+  def vendor_params
+    params.require(:vendor).permit(:name, :logo, :latitude, :longitude)
+  end
 
 end

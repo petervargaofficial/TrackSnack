@@ -2,9 +2,11 @@
 <%= form_for @order do |f| %>
   <%= f.label :user_id %>
   <%= f.text_field :user_id %> <br>
-  <%= f.label :confirmed %>
-  <%= f.text_field :confirmed %>
+  <%= f.label :customer_confirmed %>
+  <%= f.text_field :customer_confirmed %><br>
+  <%= f.label :vendor_confirmed %>
+  <%= f.text_field :vendor_confirmed %><br>
   <%= f.submit %>
 <% end %>
-
+<br>
 <%= link_to("all orders", orders_path) %>

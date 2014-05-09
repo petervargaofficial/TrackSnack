@@ -115,19 +115,34 @@ $(window).on('load page:load', initialize);
     </div>
 
 <!-- TODO: The navBar shows either MyProfile / Signout icon || or || Sign-up / sign-in icon -->
-<!-- Based in the info if the customer is signed in or not -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-left">
         <li><a href="/how_to_use">How to use</a></li>
         <li><a href="/contacts">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/how_to_use">My Profile</a></li>
-        <li><a href="/contacts"><span class="glyphicon glyphicon-log-out"></span></a></li>
+        <% if signed_in? %>
+          <li><%= link_to "My profile", current_user %></li>
+          <li><a href='/signout'><span class="glyphicon glyphicon-log-out"></span></a></li>
+        <% else %>
+          <li><%= link_to "Sign up", signup_path %></li>
+          <li><a href='/signin'><span class="glyphicon glyphicon-log-in"></span></a></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <%flash.each do|key,value|%>
+                <div class="alert alert-<%=key%>"> <%=value%> </div>
+        <%end%>
+      </div>
+    </div>
+</div>
 
 <%= yield %>
 

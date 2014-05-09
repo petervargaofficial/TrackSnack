@@ -1,35 +1,49 @@
 class UsersController < ApplicationController
+  # before_filter :signed_in_user
+
   def index
-	@users = User.all  	
+    @users = User.all
   end
 
   def edit
-  	@user = User.find_by_id(params[:id])
+    @user = User.find_by_id(params[:id])
   end
 
   def update
-  	user = User.find_by_id(params[:id])
-  	user.update(user_params)
-  	redirect_to users_path
+    @user = User.find(params[:id])
+    @user.update_attributes(user_params)
+    redirect_to @user
   end
 
   def new
-  	@user = User.new
+    @user = User.new
   end
 
   def create
-  	User.create(user_params)
-  	redirect_to(users_path)
+    @user = User.new(user_params)
+    if @user.save
+      flash[:success] = "Welcome to the Cook Book app!"
+      sign_in @user
+      redirect_to @user
+    else
+      flash[:error] = "Failed to create account.  Try again."
+      redirect_to new_user_path
+    end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def destroy
-  	User.find_by_id(params[:id]).delete
-  	redirect_to(users_path)
+    User.find_by_id(params[:id]).delete
+    redirect_to(users_path)
   end
 
   private
+
   def user_params
-  	params.require(:user).permit(:name, :email, :role)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-  
+
 end

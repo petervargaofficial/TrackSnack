@@ -1,5 +1,6 @@
 class CustomerOrdersController < ApplicationController  
-
+  before_filter :signed_in_user
+  
 	# before_all => if the customer is not logged in - make them login
 
   def index
@@ -26,7 +27,7 @@ class CustomerOrdersController < ApplicationController
   	# redirecting to new_customer_order_path with order_id AND vendor_id as parameter
   	
   	# TODO make this current logged user
-  	userID = 1
+  	userID = current_user.id
   	new_order = Order.create(user_id:userID)
   	new_order.customer_confirmed = false
   	new_order.save
@@ -45,7 +46,7 @@ class CustomerOrdersController < ApplicationController
   	@vendor = Vendor.find_by_id(params[:vendor_id])
   	@menu_items = @vendor.menu_items
   	# TODO: use currenly signed customer instead
-  	@user_id = 1
+  	@user_id = current_user.id
   end
 
   def add_items_to_order
@@ -71,8 +72,8 @@ class CustomerOrdersController < ApplicationController
   		# item_name, quantity, price, $sub-total (computed when rendered as quantity x price) [adding it to $total]
 	# displaying $total for all items (was computed as we rendered each line)
 	# showing "Order Now" button redirecting customer_order_path(order_id) showing particular order to customer
-	@order = Order.find_by_id(params[:order_id])
-  	@order_item_quantities = @order.order_item_quantities	
+	  @order = Order.find_by_id(params[:order_id])
+    @order_item_quantities = @order.order_item_quantities	
   end
 
   def customer_confirmed

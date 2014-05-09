@@ -1,0 +1,34 @@
+<a href="/vendor_todos/index"><<-- Back to all orders</a>
+<p> Customer name: <%= @order.user.name %> </p>
+<p> Order: </p>
+<% total = 0%>
+<table class = "table table-bordered table-hover table-condensed">
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+    </tr>
+  <% @order_item_quantities.each do |order_item_quantity| %>
+    <tr>
+      <td><%= order_item_quantity.menu_item.item_name%></td>
+      <td><%= order_item_quantity.quantity %></td>
+      <td>$<%= order_item_quantity.menu_item.item_price * order_item_quantity.quantity %></td>
+    </tr>
+    <% total += order_item_quantity.menu_item.item_price * order_item_quantity.quantity %>
+  <% end %>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Total: $<%= total %></td>
+    </tr>
+</table>
+
+<!-- if not confimed -->
+<% if @order.vendor_confirmed%>
+  <p>Already confirmed</p>
+<% else %>
+  <p>
+    <%= link_to("CONFIRM NOW", "/vendor_todos/update?order_id=#{@order.id}", :method => :post,:class => "btn btn-primary") %>
+  </p>
+<% end %>
+
