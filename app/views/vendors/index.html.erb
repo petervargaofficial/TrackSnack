@@ -1,16 +1,23 @@
+<a href="/admin"> <<- Back to Admin Panel</a><br>
+<br>
+
 <strong>All vendors:</strong>
 <br>
 
-<table>
+<table class = "table table-bordered table-hover table-condensed">
   <tr>
     <th>Logo</th>
     <th>Vendor Name</th>
+    <th>Longitude</th>
+    <th>Latitude</th>
     <th>Editing</th>
   </tr>
   <% @vendors.each do |vendor| %>
     <tr>
       <td><%= image_tag(vendor.logo, size: "50x50") %></td>
       <td><%= vendor.name %></td>
+      <td><%= vendor.longitude %></td>
+      <td><%= vendor.latitude %></td>
       <td>
         <%= link_to("details", vendor) %>
         <%= link_to("edit", edit_vendor_path(vendor)) %>
@@ -20,4 +27,6 @@
   <% end %>
 </table>
 <br>
-<a href="/vendors/new">new vendor</a><br>
+
+<br>
+<a href="/vendors/new">new vendor</a>

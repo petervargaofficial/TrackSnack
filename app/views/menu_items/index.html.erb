@@ -1,15 +1,18 @@
+<a href="/admin"> <<- Back to Admin Panel</a><br>
+<br>
+
 <h1>All Items:</h1>
 <p> <%= link_to("create new item", new_menu_item_path) %> </p>
 
 
-<table>
-  <th>
-    <td>Item name</td>
-    <td>Description</td>
-    <td>Price</td>
-    <td>vendor_id</td>
-    <td>Manage</td>
-  </th>
+<table class = "table table-bordered table-hover table-condensed">
+  <tr>
+    <th>Item name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>vendor_id</th>
+    <th>Manage</th>
+  </tr>
   <% @menu_items.each do |item| %>
   <tr>
     <td><%= item.item_name %></td>

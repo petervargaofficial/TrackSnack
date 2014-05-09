@@ -17,6 +17,7 @@ class CustomerOrdersController < ApplicationController
 			# [TODO feature] the list is sorted by distance from current location (based on autolocalization). 
 				# this will be computed at the time of rendering
   	@vendors = Vendor.all
+    gon.vendors = @vendors
   end
 
   def create_order

@@ -1,13 +1,16 @@
+<a href="/admin"> <<- Back to Admin Panel</a><br>
+<br>
+
 <h1>All Users</h1>
 <p><%= link_to("new user", new_user_path) %></p>
 
-<table>
-  <th>
-    <td>User Name</td>
-    <td>Email</td>
-    <td>Role</td>
-    <td>Manage</td>
-  </th>
+<table class = "table table-bordered table-hover table-condensed">
+  <tr>
+    <th>User Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Manage</th>
+  </tr>
   <% @users.each do |user| %>
   <tr>
     <td><%= user.name %></td>
