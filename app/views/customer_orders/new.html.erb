@@ -1,0 +1,35 @@
+<!-- # Shows:
+    # Menu(<form>) of chosen vendor (params[:vendor_id]) showing item_name, item_description, item_price in a table
+      # a blank field next to each order allowing customer to specify quantity of item within order
+    # Big button saying "Preview order" taking customer to post @ "customer_orders/add_items_to_order" path
+      # sending order_id , all vendor items IDs (menu_item.id) and quantities from the form as params
+ -->
+
+<%= image_tag(@vendor.logo, size: "50x50") %>
+<h1><%= @vendor.name %></h1>
+
+<form action="/customer_orders/add_items_to_order?order_id=<%=@order.id%>" method="post">
+  <%= token_tag form_authenticity_token %>
+  <table class = "table table-bordered table-hover table-condensed">
+      <tr>
+        <th>Item Name</th>
+        <th>Item description</th>
+        <th>Item price</th>
+        <th>Quantity</th>
+      </tr>
+    <% @menu_items.each do |item| %>
+      <tr>
+        <td><%= item.item_name%></td>
+        <td><%= item.item_description%></td>
+        <td><%= item.item_price %></td>
+        <td>
+          <input type="text" value="0" name="menu_items[<%=item.id%>]">
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <br>
+  <input type = "submit">
+</form>
+
+

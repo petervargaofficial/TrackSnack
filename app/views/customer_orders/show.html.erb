@@ -1,0 +1,30 @@
+<h3><%= @confirmation_text %> </h3>
+<br>
+
+<table class = "table table-bordered table-hover table-condensed">
+    <tr>
+      <th>Item Name</th>
+      <th>Item description</th>
+      <th>Item price</th>
+      <th>Quantity</th>
+      <th>SubTotal</th>
+    </tr>
+    <% total = 0 %>
+  <% @order_item_quantities.each do |order_item_quantity| %>
+    <tr>
+      <td><%= order_item_quantity.menu_item.item_name%></td>
+      <td><%= order_item_quantity.menu_item.item_description%></td>
+      <td><%= order_item_quantity.menu_item.item_price %></td>
+      <td><%= order_item_quantity.quantity %></td>
+      <td><%= order_item_quantity.menu_item.item_price * order_item_quantity.quantity %></td>
+    </tr>
+    <% total += order_item_quantity.menu_item.item_price * order_item_quantity.quantity %>
+  <% end %>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Total: <%= total %></td>
+    </tr>
+</table>

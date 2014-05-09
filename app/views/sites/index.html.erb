@@ -1,7 +1,17 @@
-Google map <br>
-Homepage <br>
-<br>
-<a href="/vendors">vendors</a><br>
-<a href="/users">users</a><br>
-<a href="/orders">orders</a><br>
-<a href="/menu_items">items</a>
+<%= image_tag("http://i.imgur.com/hAa3TLe.jpg", size: "1050x300") %>
+
+<h2>List of all Vendors:</h2>
+<table class = "table table-bordered table-hover table-condensed">
+  <tr>
+    <th>Logo</th>
+    <th>Vendor Name</th>
+    <th>Order</th>
+  </tr>
+  <% @vendors.each do |vendor| %>
+    <tr>
+      <td><%= image_tag(vendor.logo, size: "50x50") %></td>
+      <td><%= vendor.name %></td>
+      <td><%= link_to("details", vendor,:class => "btn btn-primary")%></td>
+    </tr>
+  <% end %>
+</table>
