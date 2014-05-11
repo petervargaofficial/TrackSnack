@@ -5,8 +5,8 @@
     <th>#</th>
     <th>Logo</th>
     <th>Vendor Name</th>
-    <th>Cousine</th>
-    <th>Distance</th>
+   <!--  <th>Cousine</th>
+    <th>Distance</th> -->
     <th>Menu Details</th>
   </tr>
   <% i = 1 %>
@@ -15,8 +15,8 @@
       <td><%= i %></td> <% i += 1 %>
       <td><%= image_tag(vendor.logo, size: "50x50") %></td>
       <td><%= vendor.name %></td>
-      <td>TBC</td>
-      <td>TBC</td>
+      <!-- <td>TBC</td>
+      <td>TBC</td> -->
       <!-- http://stackoverflow.com/questions/13414663/using-rails-link-to-for-links-that-post -->
       <td><%= link_to("View Menu", customer_orders_create_order_path(vendor_id: vendor.id), :method => :post,:class => "btn btn-primary")%></td>
     </tr>

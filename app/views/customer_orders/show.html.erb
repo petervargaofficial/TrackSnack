@@ -16,7 +16,7 @@
       <td><%= order_item_quantity.menu_item.item_description%></td>
       <td><%= order_item_quantity.menu_item.item_price %></td>
       <td><%= order_item_quantity.quantity %></td>
-      <td><%= order_item_quantity.menu_item.item_price * order_item_quantity.quantity %></td>
+      <td><%= (order_item_quantity.menu_item.item_price * order_item_quantity.quantity).round(2) %></td>
     </tr>
     <% total += order_item_quantity.menu_item.item_price * order_item_quantity.quantity %>
   <% end %>
@@ -25,6 +25,6 @@
       <td></td>
       <td></td>
       <td></td>
-      <td>Total: <%= total %></td>
+      <td>Total: <%= total.round(2) %></td>
     </tr>
 </table>
