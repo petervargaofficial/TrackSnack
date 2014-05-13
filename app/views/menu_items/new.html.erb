@@ -1,14 +1,6 @@
 <h1>Create New Menu Item</h1>
-<p><%= link_to("Go to all items", menu_items_path) %></p>
+<%= render partial: "form" %>
 
-<%= form_for @menu_item do |f| %>
-  <%= f.label :item_name %>
-  <%= f.text_field :item_name %> <br>
-  <%= f.label :item_description %>
-  <%= f.text_field :item_description %> <br>
-  <%= f.label :item_price %>
-  <%= f.text_field :item_price %> <br>
-  <%= f.label :vendor_id %>
-  <%= f.text_field :vendor_id %> <br>
-  <%= f.submit %>
-<% end %>
+<!-- Spencer: Your new.html.erb and edit.html.erb were nearly identical. This is a prime candidate to use a partial. Often times the new and edit pages are identical. The partial is inserted where the render statement is. The resulting html pages are unchanged. -->
+
+

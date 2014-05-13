@@ -1,0 +1,14 @@
+
+<p><%= link_to("Go to all items", menu_items_path) %></p>
+
+<%= form_for @menu_item do |f| %>
+  <%= f.label :item_name %>
+  <%= f.text_field :item_name %> <br>
+  <%= f.label :item_description %>
+  <%= f.text_field :item_description %> <br>
+  <%= f.label :item_price %>
+  <%= f.text_field :item_price %> <br>
+  <%= f.label :vendor_id %>
+  <%= f.text_field :vendor_id %> <br>
+  <%= f.submit %>
+<% end %>

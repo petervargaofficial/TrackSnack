@@ -1,4 +1,5 @@
 TrackSnack::Application.routes.draw do
+  # Spencer: I think the lessons on nested routes in week 6 may help you organize your routes. 
   root 'sites#index'
   get '/how_to_use', to: 'sites#how_to_use'
   get '/contacts', to: 'sites#contacts'

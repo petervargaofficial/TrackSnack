@@ -6,15 +6,21 @@ class VendorTodosController < ApplicationController
   end
 
   def edit
-    @order = Order.find_by_id(params[:order_id])
+    @order = Order.find_by_id(order_id)
     @order_item_quantities = @order.order_item_quantities
   end
 
   def update
-    Order.find_by_id(params[:order_id]).update(vendor_confirmed:true)
+    Order.find_by_id(order_id).update(vendor_confirmed:true)
     redirect_to '/vendor_todos/index'
   end
 
   def show
   end
+
+  private
+    # good way to protect your access of the params hash
+    def order_id
+      params[:order_id]
+    end
 end
