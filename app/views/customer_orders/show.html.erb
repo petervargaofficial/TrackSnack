@@ -12,6 +12,7 @@
     <% total = 0 %>
   <% @order_item_quantities.each do |order_item_quantity| %>
     <tr>
+      <!-- Spencer: Nice use of your relationships to access your data. -->
       <td><%= order_item_quantity.menu_item.item_name%></td>
       <td><%= order_item_quantity.menu_item.item_description%></td>
       <td><%= order_item_quantity.menu_item.item_price %></td>

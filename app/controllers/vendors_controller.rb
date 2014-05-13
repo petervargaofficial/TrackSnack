@@ -15,21 +15,21 @@ class VendorsController < ApplicationController
   end
 
   def show
-    @vendor = Vendor.find_by_id(params[:id])
+    @vendor = Vendor.find_by_id(id)
   end
 
   def edit
-    @vendor = Vendor.find_by_id(params[:id])
+    @vendor = Vendor.find_by_id(id)
   end
 
   def update
-    vendor = Vendor.find_by_id(params[:id])
+    vendor = Vendor.find_by_id(id)
     vendor.update(vendor_params)
     redirect_to vendors_path
   end
 
   def destroy
-    Vendor.find_by_id(params[:id]).delete
+    Vendor.find_by_id(id).delete
     redirect_to vendors_path
   end
 
@@ -37,6 +37,10 @@ class VendorsController < ApplicationController
 
   def vendor_params
     params.require(:vendor).permit(:name, :logo, :latitude, :longitude)
+  end
+
+  def id
+    params[:id]
   end
 
 end
